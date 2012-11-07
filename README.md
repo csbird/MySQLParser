@@ -12,4 +12,4 @@ MySQLParser
 ====
 本工具是基于antlr3来实现的mysql解析器。antlr主页上提供有mysql的antlr语法，通过对这个语法做小部分的规则重写（rewrite），
 从而构造一个带表信息的AST（Abstract Syntax Tree）,最后遍历这个AST输出表信息。由于antlr提供的mysql语法只是支持单条sql
-，本工具对其进行了扩展以支持带分号的多语句sql解析，并加入了use db语句的支持。
+，本工具对其进行了扩展以支持带分号的多语句sql解析，并增加入了use database语句的支持。
