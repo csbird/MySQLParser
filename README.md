@@ -17,4 +17,31 @@ MySQLParser
 
 从而构造一个带表信息的AST（Abstract Syntax Tree）,最后遍历这个AST输出表信息。由于antlr提供的mysql语法只是支持单条sql
 
-，本工具对其进行了扩展以支持带分号的多语句sql解析，并增加入了use database语句的支持。
+，本工具对其进行了扩展以支持带分号的多语句sql解析，并增加了use database语句的支持。
+
+3、编译使用
+====
+1）下载antlr c runtime api，编译安装。库和头文件默认安装到/usr/local/include和/usr/local/lib
+
+2）编译本项目。
+
+3）简单测试：
+
+    ./main "use mydb;select * from abc;delete from yy;"
+执行输出如下：
+
+    Input=mydb.abc
+    Output=mydb.yy
+
+4、关于解析器代码的生成
+====
+本工具使用的语法文件是在antlr提供的mysql parser grammar基础上修改得到的：去除源文件里对标志符（identifers）的输出动作
+代码；重写部分规则以生成所需AST（语法文件中带->的内容即为重写的规则）；增加一个虚构token：TABLE_REF；增加use_statement。
+然后使用antlr工具去生成解析代码MySQLLexer.*和MySQLParser.*。
+
+如何遍历AST解析表信息，请参考main.c中的注释说明。
+
+如何重写语法规则以及antlr更多详细使用，请参考antlr相关文档。
+5、联系
+====
+zhmzhang at gmail.com
