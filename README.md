@@ -44,4 +44,4 @@ MySQLParser
 如何重写语法规则以及antlr更多详细使用，请参考antlr相关文档。
 5、联系
 ====
-zhmzhang at gmail.com
+gmail貌似挂了，暂时用zhimingzhang at foxmail.com
